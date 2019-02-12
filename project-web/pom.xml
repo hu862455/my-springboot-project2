@@ -29,10 +29,17 @@
             <version>2.1.2.RELEASE</version>
             <scope>provided</scope>
         </dependency>
+        <!-- 添加service模块 -->
         <dependency>
             <groupId>com.iflytek.epdcloud</groupId>
             <artifactId>project-service</artifactId>
             <version>1.0.0.1001</version>
+        </dependency>
+        <!-- 集成thymeleaf -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+            <version>2.1.2.RELEASE</version>
         </dependency>
     </dependencies>
 
@@ -41,6 +48,7 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.1.2.RELEASE</version>
             </plugin>
         </plugins>
     </build>
