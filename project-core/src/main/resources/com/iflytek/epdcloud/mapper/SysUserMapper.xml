@@ -10,6 +10,15 @@
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="password" jdbcType="VARCHAR" property="password" />
   </resultMap>
+  <resultMap id="userMap" type="com.iflytek.epdcloud.dto.SysUser">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <collection property="roles" ofType="com.iflytek.epdcloud.dto.SysRole">
+      <result column="name" property="name"/>
+    </collection>
+  </resultMap>
+
   <sql id="Base_Column_List">
     <!--
       WARNING - @mbg.generated

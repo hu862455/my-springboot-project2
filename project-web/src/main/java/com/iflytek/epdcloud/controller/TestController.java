@@ -2,9 +2,7 @@ package com.iflytek.epdcloud.controller;
 
 import com.iflytek.epdcloud.service.DemoService;
 import com.iflytek.epdcloud.vo.Msg;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,6 +37,7 @@ public class TestController {
     }
 
     @RequestMapping("/")
+    @ApiOperation(value="home页面跳转", notes="就是个跳转的控制器")
     public String index(Model model){
         Msg msg =  new Msg("测试标题","测试内容","额外信息，只对管理员显示");
         model.addAttribute("msg", msg);

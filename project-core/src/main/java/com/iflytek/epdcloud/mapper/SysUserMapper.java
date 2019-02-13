@@ -20,6 +20,6 @@ public interface SysUserMapper {
 
     int updateByPrimaryKey(SysUser record);
 
-    public SysUser findByUserName(String username);
+    SysUser findByUserName(String username);
 
 }
