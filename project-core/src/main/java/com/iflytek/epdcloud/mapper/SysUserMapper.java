@@ -19,4 +19,7 @@ public interface SysUserMapper {
     int updateByPrimaryKeySelective(SysUser record);
 
     int updateByPrimaryKey(SysUser record);
+
+    public SysUser findByUserName(String username);
+
 }

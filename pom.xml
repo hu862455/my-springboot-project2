@@ -8,6 +8,7 @@
         <module>project-service</module>
         <module>project-api</module>
         <module>project-task</module>
+        <module>project-web</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

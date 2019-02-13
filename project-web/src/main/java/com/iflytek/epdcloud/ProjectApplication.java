@@ -5,6 +5,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
  * @Package_name: com.iflytek.epdcloud
@@ -16,6 +17,7 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
  **/
 @SpringBootApplication(scanBasePackages = "com.iflytek.epdcloud")
 @MapperScan("com.iflytek.epdcloud.mapper")
+@EnableTransactionManagement
 public class ProjectApplication   extends SpringBootServletInitializer {
     @Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
