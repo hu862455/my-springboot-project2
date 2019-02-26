@@ -9,6 +9,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -19,6 +20,9 @@ public class CustmUserService implements UserDetailsService {
 
     @Autowired
     SysUserMapper userMapper;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         //重写loadUserByUsername 方法获得 userdetails 类型用户
@@ -34,6 +38,6 @@ public class CustmUserService implements UserDetailsService {
             System.out.println(role.getName());
         }
         return new org.springframework.security.core.userdetails.User(realUser.getUsername(),
-                realUser.getPassword(), authorities);
+                passwordEncoder.encode(realUser.getPassword()), authorities);
     }
 }

@@ -1,5 +1,7 @@
 package com.iflytek.epdcloud.service;
 
+import com.github.pagehelper.PageHelper;
+import com.iflytek.epdcloud.vo.PageVO;
 import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.List;
@@ -36,4 +38,13 @@ public class SysUserService{
         return sysUserMapper.updateByPrimaryKey(record);
     }
 
+    public PageVO<SysUser> getAllUser(Integer pageSize, Integer page){
+        PageVO<SysUser> pageVo=new PageVO();
+        pageVo.setPageSize(pageSize);
+        pageVo.setPage(page);
+        PageHelper.startPage(page,pageSize);
+        List<SysUser> users = sysUserMapper.getAllUser();
+
+        return null;
+    }
 }

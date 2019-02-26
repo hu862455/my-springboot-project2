@@ -16,6 +16,16 @@ public class PageVO<T> implements Serializable {
     private Integer pageSize;
     @ApiModelProperty(value="当前页码")
     private Integer page;
+    @ApiModelProperty(value="是否有下一页")
+    private Integer isMore;
     @ApiModelProperty(value="数据")
     private List<T> data;
+
+    public PageVO() {
+    }
+    public PageVO(Integer count, Integer pageSize, Integer page) {
+        this.count = count;
+        this.pageSize = pageSize;
+        this.page = page;
+    }
 }

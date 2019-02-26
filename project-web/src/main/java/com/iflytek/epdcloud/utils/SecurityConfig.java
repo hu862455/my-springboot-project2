@@ -8,6 +8,8 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
@@ -16,6 +18,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     UserDetailsService customUserService(){ //注册UserDetailsService 的bean
         return new CustmUserService();
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
     }
 
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -40,7 +47,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) throws Exception {
         //解决静态资源被拦截的问题
-        web.ignoring().antMatchers("/static/**");
+        web.ignoring().antMatchers("/static/**")
+                .antMatchers("/swagger-ui.html/**");
     }
 
 }

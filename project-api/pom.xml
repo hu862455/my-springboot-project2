@@ -10,12 +10,42 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>project-api</artifactId>
+    <packaging>war</packaging>
+
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <!-- 移除嵌入式tomcat插件 -->
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+            </exclusions>
+            <version>RELEASE</version>
+            <scope>compile</scope>
+        </dependency>
+        <!-- 新增tomcat支持 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <version>2.1.2.RELEASE</version>
+            <scope>provided</scope>
+        </dependency>
         <dependency>
             <groupId>com.iflytek.epdcloud</groupId>
             <artifactId>project-service</artifactId>
             <version>1.0.0.1001</version>
         </dependency>
     </dependencies>
-
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.1.2.RELEASE</version>
+            </plugin>
+        </plugins>
+    </build>
 </project>
