@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:include="head :: header">...</div>
+<h3>我来组成身体</h3>
+<div th:replace="~{foot :: footer}">...</div>
+</body>
+</html>

@@ -2,6 +2,7 @@ package com.iflytek.epdcloud.mapper;
 
 import com.iflytek.epdcloud.dto.SysUser;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -22,7 +23,7 @@ public interface SysUserMapper {
 
     int updateByPrimaryKey(SysUser record);
 
-    SysUser findByUserName(String username);
+    SysUser findByUserName(@Param("username") String username);
 
     List<SysUser> getAllUser();
 
