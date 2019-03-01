@@ -4,7 +4,6 @@ import com.alibaba.fastjson.JSONObject;
 import com.iflytek.epdcloud.dto.WsAccount;
 import com.iflytek.epdcloud.dto.WsConsumption;
 import com.iflytek.epdcloud.dto.WsUser;
-import com.iflytek.epdcloud.service.WsAccountService;
 import com.iflytek.epdcloud.service.WsConsumptionService;
 import com.iflytek.epdcloud.service.WsUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.validation.Valid;
-import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -29,7 +27,7 @@ import java.util.Date;
 public class UserController {
 
     @Autowired
-    WsUserService UserService;
+    WsUserService userService;
 
     @Autowired
     WsAccountService AccountService;
@@ -37,6 +35,16 @@ public class UserController {
     @Autowired
     WsConsumptionService consumptionService;
 
+
+    /**
+     * @Description:新增用户
+     * @params: [user]
+     * @return: com.alibaba.fastjson.JSONObject
+     * @exception:
+     * @methodName: addUser
+     * @updateDate: 2019/3/1 14:30
+     * @updateAuthor: shuaihu2
+     */
     @RequestMapping(value = "addUser")
     @ResponseBody
     public JSONObject addUser(@Valid WsUser user){
@@ -45,14 +53,14 @@ public class UserController {
         WsUser inquireUser = new WsUser();
         inquireUser.setPhone(user.getPhone());
         inquireUser.setDelFlag(0);
-        WsUser resultUser = UserService.selectByParam(inquireUser);
+        WsUser resultUser = userService.selectByParam(inquireUser);
         if (resultUser == null) {
             result.put("code", 1);
             result.put("msg","已存在相同手机号！");
             return result;
         }
 
-        int insert = UserService.insert(user);
+        int insert = userService.insert(user);
         // 根据id创建账户数据
         WsAccount userAccount = new WsAccount();
         userAccount.setUserId(user.getId());
@@ -73,4 +81,11 @@ public class UserController {
         result.put("msg","新增用户成功！");
         return result;
     }
+
+    @RequestMapping(value = "recharge")
+    @ResponseBody
+    public JSONObject recharge (@Valid WsConsumption consumption){
+        userService.recharge(consumption);
+    }
+
 }

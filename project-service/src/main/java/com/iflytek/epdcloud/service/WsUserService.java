@@ -1,7 +1,10 @@
 package com.iflytek.epdcloud.service;
 
+import com.iflytek.epdcloud.dto.WsConsumption;
 import com.iflytek.epdcloud.dto.WsUser;
+import com.iflytek.epdcloud.mapper.WsAccountMapper;
 import com.iflytek.epdcloud.mapper.WsUserMapper;
+import com.iflytek.epdcloud.vo.ResultVo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -11,6 +14,9 @@ public class WsUserService{
 
     @Resource
     private WsUserMapper wsUserMapper;
+
+    @Resource
+    private WsAccountMapper wsAccountMapper;
 
     public int deleteByPrimaryKey(Long id){
         return wsUserMapper.deleteByPrimaryKey(id);
@@ -39,6 +45,12 @@ public class WsUserService{
 
     public WsUser selectByParam(WsUser record){
         return wsUserMapper.selectByParam(record);
+    }
+
+    public ResultVo recharge(WsConsumption consumption){
+        // 1.修改用户账号余额
+        wsAccountMapper.updateByPrimaryKeySelective()
+        // 2.添加消费/充值记录
     }
 
 }

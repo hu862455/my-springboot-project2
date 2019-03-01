@@ -5,9 +5,10 @@ import com.iflytek.epdcloud.mapper.WsAccountMapper;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
-public class WsAccountService{
+public class WsAccountService {
 
     @Resource
     private WsAccountMapper wsAccountMapper;
@@ -34,6 +35,14 @@ public class WsAccountService{
 
     public int updateByPrimaryKey(WsAccount record){
         return wsAccountMapper.updateByPrimaryKey(record);
+    }
+
+    public int updateBatch(List<WsAccount> list){
+        return wsAccountMapper.updateBatch(list);
+    }
+
+    public int batchInsert(List<WsAccount> list){
+        return wsAccountMapper.batchInsert(list);
     }
 
 }

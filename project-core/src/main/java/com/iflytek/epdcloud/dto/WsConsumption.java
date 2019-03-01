@@ -7,6 +7,8 @@ import java.math.BigDecimal;
 import java.util.Date;
 import lombok.Data;
 
+import javax.validation.constraints.NotNull;
+
 /**
  * Created by Mybatis Generator 2019/02/28
  */
@@ -28,6 +30,7 @@ public class WsConsumption implements Serializable {
     /**
      * 用户id
      */
+    @NotNull(message = "用户id不能为空！")
     @ApiModelProperty(value = "用户id")
     private Long userId;
 
